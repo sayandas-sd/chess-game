@@ -1,5 +1,6 @@
 import { Game } from "./Game";
 import { CREATE_GAME, MAKE_MOVE } from "./message";
+import { WebSocket } from "ws";
 
 export class GameManager {
 
@@ -33,14 +34,14 @@ export class GameManager {
                    this.games.push(game);
                    this.pendingUsers = null;
                 } else {
-                    this.pendingUsers = socket;
+                    this.pendingUsers = [socket];
                 }
             }
 
             if(message.type === MAKE_MOVE) {
                 const game = this.games.find(game => game.player1 === socket || game.player2 === socket);   
                 if(game) {
-                    game.makeMove(message.move);
+                    game.makeMove(socket, message.move);
                 }
             }
         });
