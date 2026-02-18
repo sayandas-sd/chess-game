@@ -50,7 +50,6 @@ export class Game {
        }
 
 
-       //check if the game is over
        if(this.board.isGameOver()) {
 
         this.player2.emit(JSON.stringify({

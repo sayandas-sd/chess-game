@@ -16,7 +16,7 @@ export class GameManager {
     }
     
     addUserToGame(socket: WebSocket) {
-        this.users.push(socket)
+        this.users.push(socket);
         this.handleMessage(socket);
     }
 
