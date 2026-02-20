@@ -41,6 +41,7 @@ export class Game {
         if(this.board.move.length % 2 === 1 && socket !== this.player2) {
             return;
         }
+        
 
        try{
             this.board.move(move);
@@ -68,12 +69,12 @@ export class Game {
        }
 
        if(this.board.moves.length % 2 === 0) {
-        this.player1.emit(JSON.stringify({
+        this.player1.send(JSON.stringify({
             type: MAKE_MOVE,
             payload: move
         }));
        } else {
-        this.player2.emit(JSON.stringify({
+        this.player2.send(JSON.stringify({
             type: MAKE_MOVE,
             payload: move
         }));
