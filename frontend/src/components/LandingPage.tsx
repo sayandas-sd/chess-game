@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import chessImage from "../assets/images/chess.webp";
+import Button from "./ui/Button";
 
 export const LandingPage = () => {
     const navigate = useNavigate();
@@ -19,12 +20,12 @@ export const LandingPage = () => {
                             Play Online Chesss Multiplayer
                         </h1>
                         <div className="mt-4 flex justify-center">
-                            <button onClick = {() => {
+                            <Button onClick = {() => {
                                     navigate('/game');
                                 }}
-                                className='bg-blue-500 text-xl font-bold font-mono rounded-lg py-4 px-10 text-white hover:bg-blue-400 cursor-pointer'>
+                                >
                                 Play Game
-                            </button>
+                            </Button>
                     </div>
                 </div>
             </div>
