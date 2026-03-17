@@ -59,7 +59,7 @@ export const Game = () => {
                     <div className="flex flex-col justify-center ">
                         {!started && <Button onClick={socketConnectionGame}>
                             Play
-                        </Button>}
+                        </Button>}     
                     </div>
                 </div>
             </div>
