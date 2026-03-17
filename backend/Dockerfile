@@ -26,6 +26,8 @@ FROM node:20-alpine
 
 WORKDIR /app
 
+RUN apk add --no-cache dumb-init
+
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
 COPY --from=deps /app/node_modules ./node_modules
@@ -40,7 +42,6 @@ ENV NODE_ENV=production
 
 EXPOSE 8080
 
-RUN apk add --no-cache dumb-init
 
 ENTRYPOINT ["dumb-init", "--"]
 CMD ["node", "dist/index.js"]
