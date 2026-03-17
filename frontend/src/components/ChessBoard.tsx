@@ -15,7 +15,6 @@ export const ChessBoard = ({chess, board, socket, setBoard}: {
 }) => {
 
     const [from, setFrom] = useState<null | Square>(null);
-    const [to, setTo] = useState<null | Square>(null);
 
     return <div className="text-white font-bold">
         {board.map((row, i) => {
