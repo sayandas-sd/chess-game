@@ -8,7 +8,10 @@ dotenv.config();
 
 const PORT = process.env.PORT || 8080;
 
-const server = createServer();
+const server = createServer((req, res) => {
+  res.writeHead(200);
+  res.end("Server is running");
+});
 
 const wss = new WebSocketServer({ server });
 
