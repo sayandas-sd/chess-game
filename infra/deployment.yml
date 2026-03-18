@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 1
+  selector:
+    matchlebels: 
+      app: chess-backend
+  template:
+    metadata:
+      lebels:
+        app: chess-backend
+    spec:
+      containers:
+        - name: chess-container
+          image: codes0/chess:e6e25669ea49180608a38c139449cfadbfe4cf27
+          ports:
+            - containerPort: 8080
+          env:
+            name: PORT
+            valueFrom:
+              configMapKeyRef:
+                name: chess-backend-config
+                key: PORT
+
+
+
+
