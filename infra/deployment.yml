@@ -2,14 +2,15 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: chess-deployment
+  namespace: backend
 spec:
   replicas: 2
   selector:
-    matchlebels: 
+    matchLabels:
       app: chess-backend
   template:
     metadata:
-      lebels:
+      labels:
         app: chess-backend
     spec:
       containers:
@@ -17,12 +18,6 @@ spec:
         image: codes0/chess:e6e25669ea49180608a38c139449cfadbfe4cf27
         ports:
         - containerPort: 8080
-        env:
-          name: PORT
-          valueFrom:
-            configMapKeyRef:
-              name: chess-backend-config
-              key: PORT
         livenessProbe: 
           httpGet:
             path: /healthz
