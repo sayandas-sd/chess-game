@@ -2,35 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: chess-deployment
-  namespace: backend
+  namespace: chess
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
-      app: chess-backend
+      app: backend
   template:
     metadata:
       labels:
-        app: chess-backend
+        app: backend
     spec:
       containers:
-      - name: chess-container
-        image: codes0/chess:e6e25669ea49180608a38c139449cfadbfe4cf27
-        ports:
-        - containerPort: 8080
-        livenessProbe: 
-          httpGet:
-            path: /healthz
-            port: 8080
-          initialDelaySeconds: 15
-          periodSeconds: 10
-        readinessProbe: 
-          httpGet:
-            path: /ready
-            port: 8080
-          initialDelaySeconds: 5
-          periodSeconds: 5
-
+        - name: chess-backend
+          image: codes0/chess:e6e25669ea49180608a38c139449cfadbfe4cf27
+          ports:
+            - containerPort: 8080
+          envFrom:
+          - configMapRef:
+              name: chess-backend-config
 
 
 

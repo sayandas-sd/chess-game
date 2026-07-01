@@ -2,5 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata: 
   name: chess-backend-config
+  namespace: chess
 data:
-  port: "8080"
+  PORT: "8080"
+  NODE_ENV: "production"
